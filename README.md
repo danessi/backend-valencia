@@ -18,7 +18,7 @@ Este proyecto proporciona una API RESTful construida con **Laravel**, lista para
 2. **Accede al directorio del proyecto:**
 
    ```bash
-   cd pizzeria
+   cd backend-valencia
    ```
 3. **Crear el .env a partir de .env.example:**
 
