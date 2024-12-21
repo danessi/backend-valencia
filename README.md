@@ -41,7 +41,7 @@ Este proyecto proporciona una API RESTful construida con **Laravel**, lista para
    docker exec -it <nombre-del-contenedor-backend> bash
    ```
 
-   Asegúrate de reemplazar `<nombre-del-contenedor-backend>` por el nombre real de tu contenedor (ejemplo: `solarsystem-backend`).
+   Asegúrate de reemplazar `<nombre-del-contenedor-backend>` por el nombre real de tu contenedor (ejemplo: `0003-companyvalencia-backend`).
 
 6. **Realiza las optimizaciones necesarias para que la aplicación funcione correctamente:**
 
