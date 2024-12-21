@@ -1,0 +1,52 @@
+#version: '3.8'
+
+services:
+  backend:
+    image: backend-laravel  # Aquí defines el nombre de la imagen
+    build:
+      args:
+        user: dam
+        uid: 1000
+      context: .
+      dockerfile: DOCKERFILE
+    container_name: 0003-companyvalencia-backend
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=local
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=laravel
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+    depends_on:
+      - mysql
+    networks:
+      - 0003-companyvalencia  # Conectamos a la red interna 0003-companyvalencia
+
+  mysql:
+    image: mysql:8.0
+    container_name: 0003-companyvalencia-mysql-db-backend
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - 0003-companyvalencia-mysql-data:/var/lib/mysql
+    networks:
+      - 0003-companyvalencia  # Conectamos a la red interna 0003-companyvalencia
+
+# Definimos las redes para que frontend y backend se comuniquen
+networks:
+  0003-companyvalencia:
+    driver: bridge  # Usamos una red interna para conectar el frontend con el backend
+    name: 0003-companyvalencia  # Este nombre será el que se cree en Docker
+
+volumes:
+  0003-companyvalencia-mysql-data:
